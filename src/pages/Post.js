@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense, lazy } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPost } from "../redux/post/PostActions";
+import pic from "../assets/pic.svg";
 function Post() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const post = useSelector((state) => state.post.post);
   const loading = useSelector((state) => state.post.loading);
-  const [pic, setPic] = useState("");
+
   useEffect(() => {
     dispatch(fetchPost(id));
   }, [id]);
@@ -16,15 +17,14 @@ function Post() {
     return (
       <div className="container">
         <div className="row my-5">
-          <div className="col-sm-12 col-md-6">
-            <div className="backgroundImage">
+          <div className="col-sm-12 col-md-6 mt-5">
+            <div>
               <img
                 style={{ objectFit: "cover", width: "100%", height: "300px" }}
-                src={`https://source.unsplash.com/random?sig=${Math.random()}`}
+                src={pic}
                 alt="nf"
               />
             </div>
-            <small className="text-muted">(Any random image)</small>
           </div>
           <div className="col-sm-12 col-md-6">
             <h3 className="text-capitalize">
@@ -39,9 +39,16 @@ function Post() {
     dispatch(fetchPost(id));
 
     return (
-      <>
-        <div className="spinner-border"></div>;
-      </>
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
+        <div
+          className="spinner-border"
+          style={{ width: "75px", height: "75px" }}
+        ></div>
+        ;
+      </div>
     );
   }
 }

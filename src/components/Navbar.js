@@ -5,7 +5,7 @@ const Navbar = () => (
   <header className={styles.navbar}>
     <div className={`${styles.navbar__title} ${styles.navbar__item}`}>
       <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
-        Task
+        Posts
       </Link>
     </div>
     <div className={styles.navbar__item}>

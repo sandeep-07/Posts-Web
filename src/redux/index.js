@@ -1,2 +1,1 @@
-export * from "./posts/PostTypes";
-export * from "./post/PostTypes";
+export * from "./create/CreateAction";
